@@ -18,6 +18,13 @@ public class Coche {
         this.marca = marca;
     }
 
+    public Coche(String marca, int capacidadDeposito, boolean esGasolina) {
+        this.numRuedas = 4;
+        this.marca = marca;
+        this.capacidadDeposito = capacidadDeposito;
+        this.esGasolina = esGasolina;
+    }
+
     public void echarGasolina(double cant) {
         if (cant > 0) {
             this.nivelDeposito += cant;
@@ -54,24 +61,12 @@ public class Coche {
         return marca;
     }
 
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
     public int getCapacidadDeposito() {
         return capacidadDeposito;
     }
 
-    public void setCapacidadDeposito(int capacidadDeposito) {
-        this.capacidadDeposito = capacidadDeposito;
-    }
-
     public boolean isEsGasolina() {
         return esGasolina;
-    }
-
-    public void setEsGasolina(boolean esGasolina) {
-        this.esGasolina = esGasolina;
     }
 
     public boolean isArrancado() {
