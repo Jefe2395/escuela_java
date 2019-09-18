@@ -5,16 +5,20 @@
  */
 package ejemplojava;
 
+import clasesjava.ProbandoString;
+
 /**
  *
  * @author usuario
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
+        ProbandoString.tratarCadenas();
+        
+    }
+
+    public static void mainCoches(String[] args) {
         System.out.println("Empezando POO");
         Coche coch = new Coche("Audi", 100, TipoColor.AMARILLO, Coche.TipoCarburante.ELECTRICO);
         coch.echarGasolina(72.12);
@@ -28,14 +32,37 @@ public class Main {
         int x = j;
         j++;
         System.out.println("Nivel deposito: " + otroCoche.getNivelDeposito() + " litros");
-        System.out.println("Nivel deposito: " + coch.getNivelDeposito() + " litros");
+        System.out.println("Nivel deposito: " + coch.getNivelDeposito() + " litros\n");
         coch.setArrancado(true);
         coch.mostrarEstado();
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0; i < 5; i++) {
             coch.acelerar();
 
         }
         coch.echarGasolina(3);
-        System.out.println("Nivel deposito: " + coch.getNivelDeposito() + " litros");
+        System.out.println("Nivel deposito: " + coch.getNivelDeposito() + " litros\n");
+
+        coch.acelerar();
+        coch.mostrarEstado();
+
+        CocheRally cocheRa = new CocheRally(1.3f, "Seat", TipoColor.ROJO, Coche.TipoCarburante.GASOLINA);
+        cocheRa.echarGasolina(100);
+        cocheRa.mostrarEstado();
+        cocheRa.setArrancado(true);
+        cocheRa.acelerar();
+        cocheRa.derrapar();
+        cocheRa.mostrarEstado();
+        cocheRa.acelerar();
+        cocheRa.acelerar();
+        cocheRa.mostrarEstado();
+
+        Coche seatNormal = cocheRa; //Conversión implicita 
+        seatNormal.explosionCilindro();
+        seatNormal.acelerar();
+        seatNormal.mostrarEstado();
+
+        CocheRally cr = (CocheRally) seatNormal; //Conversión explicita o casting
+        System.out.println("Y el rozamiento es :" + cr.getRozamiento());
+
     }
 }

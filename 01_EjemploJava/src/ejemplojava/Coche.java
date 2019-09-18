@@ -23,6 +23,7 @@ public class Coche {
         this.marca = marca;
         this.color = color;
         this.carburante = carbu;
+        this.capacidadDeposito = 100;
     }
 
     public Coche(String marca, String color, TipoCarburante carbu) {
@@ -30,6 +31,7 @@ public class Coche {
         this.marca = marca;
         compruebaColor(color);
         this.carburante = carbu;
+        this.capacidadDeposito = 100;
     }
 
     public Coche(String marca, int capacidadDeposito, TipoColor color, TipoCarburante carbu) {
@@ -38,6 +40,11 @@ public class Coche {
         this.capacidadDeposito = capacidadDeposito;
         this.color = color;
         this.carburante = carbu;
+    }
+
+    public Coche() {
+        this.NUMRUEDAS = 4;
+        this.marca = "";
     }
 
     public void echarGasolina(double cant) {
@@ -51,6 +58,7 @@ public class Coche {
 
     public void acelerar() {
         if (arrancado) {
+            explosionCilindro();
             nivelDeposito -= 0.1;
         }
     }
@@ -61,11 +69,9 @@ public class Coche {
 
     @Override
     public String toString() {
-        return marca + "\nColor del coche: "+ color + "\nCapacidad deposito: "+capacidadDeposito
-                + "\nNivel deposito: "+ nivelDeposito+ "\nTipo de carburante: "+carburante+ "\nNumero de ruedas "+NUMRUEDAS+ "\n";
+        return marca + "\nColor del coche: " + color + "\nCapacidad deposito: " + capacidadDeposito
+                + "\nNivel deposito: " + nivelDeposito + "\nTipo de carburante: " + carburante + "\nNumero de ruedas " + NUMRUEDAS + "\n";
     }
-
-    
 
     public double getNivelDeposito() {
         return nivelDeposito;
@@ -99,12 +105,21 @@ public class Coche {
         this.arrancado = arrancado;
     }
 
+    protected void setNivelDeposito(double nivelDeposito) {
+        this.nivelDeposito = nivelDeposito;
+    }
+    
+
     public void compruebaColor(String color) {
         try {
             this.color = TipoColor.valueOf(color.toUpperCase());
         } catch (IllegalArgumentException e) {
             this.color = TipoColor.valueOf("BLANCO");
         }
+    }
+
+    protected void explosionCilindro() {
+           System.out.println("Motor en funcionamiento");
     }
 
 }
