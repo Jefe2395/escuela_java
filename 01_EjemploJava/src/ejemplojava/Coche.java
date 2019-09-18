@@ -6,7 +6,7 @@ package ejemplojava;
  */
 public class Coche {
 
-    private final byte numRuedas;
+    private final byte NUMRUEDAS;
     private String marca;
     private int capacidadDeposito;
     private boolean esGasolina;
@@ -14,12 +14,12 @@ public class Coche {
     private boolean arrancado;
 
     public Coche(String marca) {
-        this.numRuedas = 4;
+        this.NUMRUEDAS = 4;
         this.marca = marca;
     }
 
     public Coche(String marca, int capacidadDeposito, boolean esGasolina) {
-        this.numRuedas = 4;
+        this.NUMRUEDAS = 4;
         this.marca = marca;
         this.capacidadDeposito = capacidadDeposito;
         this.esGasolina = esGasolina;
@@ -54,7 +54,7 @@ public class Coche {
     }
 
     public byte getNumRuedas() {
-        return numRuedas;
+        return NUMRUEDAS;
     }
 
     public String getMarca() {
