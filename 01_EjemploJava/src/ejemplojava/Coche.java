@@ -6,23 +6,38 @@ package ejemplojava;
  */
 public class Coche {
 
+    enum TipoCarburante {
+        GASOLINA, DIESEL, ELECTRICO
+    };
     private final byte NUMRUEDAS;
-    private String marca;
+    private final String marca;
+
     private int capacidadDeposito;
-    private boolean esGasolina;
     private double nivelDeposito;
     private boolean arrancado;
+    private TipoColor color;
+    private TipoCarburante carburante;
 
-    public Coche(String marca) {
+    public Coche(String marca, TipoColor color, TipoCarburante carbu) {
         this.NUMRUEDAS = 4;
         this.marca = marca;
+        this.color = color;
+        this.carburante = carbu;
     }
 
-    public Coche(String marca, int capacidadDeposito, boolean esGasolina) {
+    public Coche(String marca, String color, TipoCarburante carbu) {
+        this.NUMRUEDAS = 4;
+        this.marca = marca;
+        compruebaColor(color);
+        this.carburante = carbu;
+    }
+
+    public Coche(String marca, int capacidadDeposito, TipoColor color, TipoCarburante carbu) {
         this.NUMRUEDAS = 4;
         this.marca = marca;
         this.capacidadDeposito = capacidadDeposito;
-        this.esGasolina = esGasolina;
+        this.color = color;
+        this.carburante = carbu;
     }
 
     public void echarGasolina(double cant) {
@@ -46,8 +61,11 @@ public class Coche {
 
     @Override
     public String toString() {
-        return "Coche " + marca + " nivel de deposito " + getNivelDeposito();
+        return marca + "\nColor del coche: "+ color + "\nCapacidad deposito: "+capacidadDeposito
+                + "\nNivel deposito: "+ nivelDeposito+ "\nTipo de carburante: "+carburante+ "\nNumero de ruedas "+NUMRUEDAS+ "\n";
     }
+
+    
 
     public double getNivelDeposito() {
         return nivelDeposito;
@@ -55,6 +73,14 @@ public class Coche {
 
     public byte getNumRuedas() {
         return NUMRUEDAS;
+    }
+
+    public TipoCarburante getCarburante() {
+        return carburante;
+    }
+
+    public TipoColor getColor() {
+        return color;
     }
 
     public String getMarca() {
@@ -65,16 +91,20 @@ public class Coche {
         return capacidadDeposito;
     }
 
-    public boolean isEsGasolina() {
-        return esGasolina;
-    }
-
     public boolean isArrancado() {
         return arrancado;
     }
 
     public void setArrancado(boolean arrancado) {
         this.arrancado = arrancado;
+    }
+
+    public void compruebaColor(String color) {
+        try {
+            this.color = TipoColor.valueOf(color.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            this.color = TipoColor.valueOf("BLANCO");
+        }
     }
 
 }

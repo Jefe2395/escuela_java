@@ -16,23 +16,13 @@ public class Main {
      */
     public static void main(String[] args) {
         System.out.println("Empezando POO");
-        Coche coch = new Coche("Audi",100,true);
+        Coche coch = new Coche("Audi", 100, TipoColor.AMARILLO, Coche.TipoCarburante.ELECTRICO);
         coch.echarGasolina(72.12);
+        coch.mostrarEstado();
 
-        System.out.println("Coche creado: " + coch.getMarca());
-        System.out.println("Capacidad deposito: " + coch.getCapacidadDeposito());
-        System.out.println("Nivel deposito: " + coch.getNivelDeposito() + " litros");
-        System.out.println("Es gasolina? " + coch.isEsGasolina());
-        System.out.println("Numero ruedas" + coch.getNumRuedas());
-
-        Coche otroCoche = new Coche("BMW",130,true);
+        Coche otroCoche = new Coche("BMW", 130, TipoColor.NEGRO, Coche.TipoCarburante.DIESEL);
         otroCoche.echarGasolina(29.82);
-
-        System.out.println("Coche creado: " + otroCoche.getMarca());
-        System.out.println("Capacidad deposito: " + otroCoche.getCapacidadDeposito());
-        System.out.println("Nivel deposito: " + otroCoche.getNivelDeposito() + " litros");
-        System.out.println("Es gasolina? " + otroCoche.isEsGasolina());
-        System.out.println("Numero ruedas " + otroCoche.getNumRuedas());
+        otroCoche.mostrarEstado();
 
         int j = 3;
         int x = j;
@@ -40,9 +30,10 @@ public class Main {
         System.out.println("Nivel deposito: " + otroCoche.getNivelDeposito() + " litros");
         System.out.println("Nivel deposito: " + coch.getNivelDeposito() + " litros");
         coch.setArrancado(true);
+        coch.mostrarEstado();
         for (int i = 0; i < 40; i++) {
             coch.acelerar();
-            coch.mostrarEstado();
+
         }
         coch.echarGasolina(3);
         System.out.println("Nivel deposito: " + coch.getNivelDeposito() + " litros");
