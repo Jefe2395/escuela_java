@@ -14,12 +14,14 @@ public abstract class Vehiculo {
     private boolean arrancado;
     private TipoColor color;
     private TipoCarburante carburante;
+    private String marca;
 
     public Vehiculo() {
 
     }
 
-    public Vehiculo(String matricula, int capacidadDeposito, double nivelDeposito, boolean arrancado, TipoColor color, TipoCarburante carburante) {
+    public Vehiculo(String marca, String matricula, int capacidadDeposito, double nivelDeposito, boolean arrancado, TipoColor color, TipoCarburante carburante) {
+        this.marca = marca;
         this.matricula = matricula;
         this.capacidadDeposito = capacidadDeposito;
         this.nivelDeposito = nivelDeposito;
@@ -28,20 +30,20 @@ public abstract class Vehiculo {
         this.carburante = carburante;
     }
 
-    public Vehiculo(String matricula, int capacidadDeposito, TipoColor color, TipoCarburante carburante) {
+    public Vehiculo(String marca, String matricula, int capacidadDeposito, TipoColor color, TipoCarburante carburante) {
+        this.marca = marca;
         this.matricula = matricula;
         this.capacidadDeposito = capacidadDeposito;
         this.color = color;
         this.carburante = carburante;
     }
 
-    public Vehiculo(String matricula, TipoColor color, TipoCarburante carburante) {
+    public Vehiculo(String marca, String matricula, TipoColor color, TipoCarburante carburante) {
+        this.marca = marca;
         this.matricula = matricula;
         this.color = color;
         this.carburante = carburante;
     }
-    
-    
 
     public Vehiculo(String matricula) {
         this.matricula = matricula;
@@ -99,6 +101,14 @@ public abstract class Vehiculo {
 
     public void setCarburante(TipoCarburante carburante) {
         this.carburante = carburante;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
 }

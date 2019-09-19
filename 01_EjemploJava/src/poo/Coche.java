@@ -4,37 +4,27 @@ package poo;
  *
  * @author usuario
  */
-public class Coche extends Vehiculo {
+public class Coche extends Vehiculo implements Rodable {
 
     private final byte NUMRUEDAS = 4;
-    private final String marca;
-
-    public Coche(String marca) {
-
-        this.marca = marca;
-        setColor(TipoColor.BLANCO);
-        setCarburante(TipoCarburante.ELECTRICO);
-        setCapacidadDeposito(100);
-    }
 
     public Coche(String marca, String matricula, int capacidadDeposito, double nivelDeposito, boolean arrancado, TipoColor color, TipoCarburante carburante) {
-        super(matricula, capacidadDeposito, nivelDeposito, arrancado, color, carburante);
-        this.marca = marca;
+        super(marca, matricula, capacidadDeposito, nivelDeposito, arrancado, color, carburante);
+
     }
 
     public Coche(String marca, String matricula, int capacidadDeposito, TipoColor color, TipoCarburante carburante) {
-        super(matricula, capacidadDeposito, color, carburante);
-        this.marca = marca;
+        super(marca, matricula, capacidadDeposito, color, carburante);
+
     }
 
     public Coche(String marca, String matricula, TipoColor color, TipoCarburante carburante) {
-        super(matricula, color, carburante);
-        this.marca = marca;
+        super(marca, matricula, color, carburante);
+
     }
 
-    public Coche() {
-
-        this.marca = "";
+    public Coche(String marca) {
+        super(marca);
     }
 
     @Override
@@ -61,7 +51,7 @@ public class Coche extends Vehiculo {
 
     @Override
     public String toString() {
-        return marca + "\nColor del coche: " + getColor() + "\nCapacidad deposito: " + getCapacidadDeposito()
+        return getMarca() + "\nColor del coche: " + getColor() + "\nCapacidad deposito: " + getCapacidadDeposito()
                 + "\nNivel deposito: " + getNivelDeposito() + "\nTipo de carburante: " + getCarburante() + "\nNumero de ruedas " + NUMRUEDAS + "\n";
     }
 
@@ -86,8 +76,9 @@ public class Coche extends Vehiculo {
         return NUMRUEDAS;
     }
 
-    public String getMarca() {
-        return marca;
+    @Override
+    public void moverse() {
+        System.out.println("AVANTI TUTO!");
     }
 
 }
