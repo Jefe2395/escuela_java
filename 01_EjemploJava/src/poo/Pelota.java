@@ -18,6 +18,5 @@ public class Pelota implements Rodable {
     public String toString() {
         return "Pelota de playa";
     }
-    
 
 }

@@ -5,8 +5,12 @@ import poo.CocheRally;
 import poo.TipoColor;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import poo.Pelota;
 import poo.Vehiculo;
 
 /**
@@ -18,7 +22,7 @@ public class TestColecciones {
     public TestColecciones() {
     }
 
-    @Test
+    //@Test
     public void arrays() {
         Coche[] coches = new Coche[3];
         coches[0] = new Coche("Ford", "912339103", TipoColor.NEGRO, Coche.TipoCarburante.DIESEL);
@@ -71,6 +75,58 @@ public class TestColecciones {
 
     public static void mostrarCoche(Coche c) {
         System.out.println(" -> " + c.toString());
+    }
+
+    //@Test
+    public void sets() {
+        HashSet<Pelota> pelotas = new HashSet<>();
+        Pelota pel1 = new Pelota();
+        Pelota pel2 = new Pelota();
+        Pelota pel3 = new Pelota();
+        Pelota pel4 = new Pelota();
+        Pelota pel5 = new Pelota();
+        Pelota pel6 = new Pelota();
+        Pelota pel7 = new Pelota();
+        pelotas.add(pel1);
+        pelotas.add(pel2);
+        pelotas.add(pel3);
+        pelotas.add(pel4);
+        pelotas.add(pel5);
+        pelotas.add(pel6);
+        pelotas.add(pel7);
+
+        pelotas.add(pel1);
+        System.out.println("Set pelotas: " + pelotas);
+        assertEquals(pelotas.size(), 7);
+        for (Pelota p : pelotas)
+        {
+            System.out.println(p.toString());
+        }
+    }
+    
+    @Test
+    public void masp()
+    {
+        HashMap<String, Boolean> coloresCalidos = new HashMap<>();
+        coloresCalidos.put("BLANCO", false);
+        coloresCalidos.put("AZUL", false);
+        coloresCalidos.put("ROJO", true);
+        coloresCalidos.put("VERDE", Boolean.FALSE);
+        coloresCalidos.put("NARAJA", true);
+        
+        if(coloresCalidos.get("ROJO"))
+        {
+            System.out.println("Rojo es calido");
+        }
+        if(coloresCalidos.get("AZUL"))
+        {
+            System.out.println("Azul es calido");
+        }
+        System.out.println("VERDE es " + coloresCalidos.get("VERDE"));
+        System.out.println("NARANJA es " + coloresCalidos.get("NARAJA"));
+        
+        coloresCalidos.put("NARAJA", false);
+        System.out.println("NARANJA es " + coloresCalidos.get("NARAJA"));
     }
 
 }
