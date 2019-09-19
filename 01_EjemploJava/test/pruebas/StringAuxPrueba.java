@@ -32,5 +32,14 @@ public class StringAuxPrueba {
 
         assertEquals(resultadoOK, resultadoAux);
     }
+    
+    @Test
+    public void probacontarPalabras()
+    {
+        assertEquals(5, StringAux.contarPalabras("En un lugar de Madrid......"));
+        assertEquals(3, StringAux.contarPalabras("          en    un     LUGAR   "));
+        assertEquals(0, StringAux.contarPalabras("         "));
+        assertEquals(1, StringAux.contarPalabras("aaaaaaaaa"));
+    }
 
 }

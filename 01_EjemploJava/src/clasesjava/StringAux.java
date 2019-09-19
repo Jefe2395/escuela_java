@@ -44,6 +44,9 @@ public class StringAux {
 
     public static int contarPalabras(String cadena) {
         cadena = quitarEspacios(cadena);
+        if (cadena.isEmpty()) {
+            return 0;
+        }
         return cadena.split(" ").length;
     }
 

@@ -1,4 +1,4 @@
-package ejemplojava;
+package poo;
 
 /**
  * @author Jaime Palomo
@@ -6,7 +6,11 @@ package ejemplojava;
 public class CocheRally extends Coche {
 
     private float rozamiento;
-
+public CocheRally(String marca) {
+        super(marca);
+        this.rozamiento = 3.14f;
+    }
+    
     public CocheRally(float rozamiento, String marca, String color, TipoCarburante carbu) {
         super(marca, color, carbu);
         this.rozamiento = rozamiento;

@@ -5,6 +5,9 @@
  */
 package ejemplojava;
 
+import poo.TipoColor;
+import poo.CocheRally;
+import poo.Coche;
 import clasesjava.ProbandoString;
 
 /**
