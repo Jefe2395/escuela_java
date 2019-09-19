@@ -17,28 +17,19 @@ public class Coche extends Vehiculo {
         setCapacidadDeposito(100);
     }
 
-    public Coche(String marca, TipoColor color, TipoCarburante carbu) {
-
+    public Coche(String marca, String matricula, int capacidadDeposito, double nivelDeposito, boolean arrancado, TipoColor color, TipoCarburante carburante) {
+        super(matricula, capacidadDeposito, nivelDeposito, arrancado, color, carburante);
         this.marca = marca;
-        setColor(color);
-        setCarburante(carbu);
-        setCapacidadDeposito(100);
     }
 
-    public Coche(String marca, String color, TipoCarburante carbu) {
-
+    public Coche(String marca, String matricula, int capacidadDeposito, TipoColor color, TipoCarburante carburante) {
+        super(matricula, capacidadDeposito, color, carburante);
         this.marca = marca;
-        compruebaColor(color);
-        setCarburante(TipoCarburante.ELECTRICO);
-        setCapacidadDeposito(100);
     }
 
-    public Coche(String marca, int capacidadDeposito, TipoColor color, TipoCarburante carbu) {
-
+    public Coche(String marca, String matricula, TipoColor color, TipoCarburante carburante) {
+        super(matricula, color, carburante);
         this.marca = marca;
-        setColor(color);
-        setCarburante(TipoCarburante.ELECTRICO);
-        setCapacidadDeposito(capacidadDeposito);
     }
 
     public Coche() {

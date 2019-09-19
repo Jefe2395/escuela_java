@@ -6,18 +6,24 @@ package poo;
 public class CocheRally extends Coche {
 
     private float rozamiento;
-public CocheRally(String marca) {
+
+    public CocheRally(String marca) {
         super(marca);
         this.rozamiento = 3.14f;
     }
-    
-    public CocheRally(float rozamiento, String marca, String color, TipoCarburante carbu) {
-        super(marca, color, carbu);
+
+    public CocheRally(float rozamiento, String marca, String matricula, int capacidadDeposito, double nivelDeposito, boolean arrancado, TipoColor color, TipoCarburante carburante) {
+        super(marca, matricula, capacidadDeposito, nivelDeposito, arrancado, color, carburante);
         this.rozamiento = rozamiento;
     }
 
-    public CocheRally(float rozamiento, String marca, TipoColor color, TipoCarburante carbu) {
-        super(marca, color, carbu);
+    public CocheRally(float rozamiento, String marca, String matricula, int capacidadDeposito, TipoColor color, TipoCarburante carburante) {
+        super(marca, matricula, capacidadDeposito, color, carburante);
+        this.rozamiento = rozamiento;
+    }
+
+    public CocheRally(float rozamiento, String marca, String matricula, TipoColor color, TipoCarburante carburante) {
+        super(marca, matricula, color, carburante);
         this.rozamiento = rozamiento;
     }
 

@@ -9,6 +9,7 @@ import poo.TipoColor;
 import poo.CocheRally;
 import poo.Coche;
 import clasesjava.ProbandoString;
+import poo.Vehiculo;
 
 /**
  *
@@ -16,18 +17,18 @@ import clasesjava.ProbandoString;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         ProbandoString.tratarCadenas();
         
-    }
+    }*/
 
-    public static void mainCoches(String[] args) {
+    public static void main(String[] args) {
         System.out.println("Empezando POO");
-        Coche coch = new Coche("Audi", 100, TipoColor.AMARILLO, Coche.TipoCarburante.ELECTRICO);
+        Coche coch = new Coche("Audi", "333gbg019", TipoColor.ROJO, Vehiculo.TipoCarburante.GASOLINA);
         coch.echarGasolina(72.12);
         coch.mostrarEstado();
 
-        Coche otroCoche = new Coche("BMW", 130, TipoColor.NEGRO, Coche.TipoCarburante.DIESEL);
+        Coche otroCoche = new Coche("BMW", "p93232jh", TipoColor.NEGRO, Coche.TipoCarburante.DIESEL);
         otroCoche.echarGasolina(29.82);
         otroCoche.mostrarEstado();
 
@@ -48,7 +49,7 @@ public class Main {
         coch.acelerar();
         coch.mostrarEstado();
 
-        CocheRally cocheRa = new CocheRally(1.3f, "Seat", TipoColor.ROJO, Coche.TipoCarburante.GASOLINA);
+        CocheRally cocheRa = new CocheRally(1.7f, "Seat", "IloveRally", TipoColor.NEGRO, Vehiculo.TipoCarburante.GASOLINA);
         cocheRa.echarGasolina(100);
         cocheRa.mostrarEstado();
         cocheRa.setArrancado(true);

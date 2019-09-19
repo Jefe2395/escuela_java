@@ -19,6 +19,30 @@ public abstract class Vehiculo {
 
     }
 
+    public Vehiculo(String matricula, int capacidadDeposito, double nivelDeposito, boolean arrancado, TipoColor color, TipoCarburante carburante) {
+        this.matricula = matricula;
+        this.capacidadDeposito = capacidadDeposito;
+        this.nivelDeposito = nivelDeposito;
+        this.arrancado = arrancado;
+        this.color = color;
+        this.carburante = carburante;
+    }
+
+    public Vehiculo(String matricula, int capacidadDeposito, TipoColor color, TipoCarburante carburante) {
+        this.matricula = matricula;
+        this.capacidadDeposito = capacidadDeposito;
+        this.color = color;
+        this.carburante = carburante;
+    }
+
+    public Vehiculo(String matricula, TipoColor color, TipoCarburante carburante) {
+        this.matricula = matricula;
+        this.color = color;
+        this.carburante = carburante;
+    }
+    
+    
+
     public Vehiculo(String matricula) {
         this.matricula = matricula;
     }
