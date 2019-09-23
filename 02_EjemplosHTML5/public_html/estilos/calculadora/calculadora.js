@@ -2,8 +2,9 @@ class Calculadora
 {
     constructor()
     {
-        this.result = document.getElementById("resultado");
-        this.anterior = document.getElementById("anterior")
+        //this.result = document.getElementById("resultado");
+        this.result = $("#resultado");
+        this.anterior = $("#anterior");
         this.men = 0;
         this.operador = "";
         this.nuevoNum = false;
@@ -12,23 +13,23 @@ class Calculadora
     numeroPulsado(eventObj) {
         if (this.nuevoNum)
         {
-            this.result.value = "0";
+            this.result.val("0");
             this.nuevoNum = false;
         }
         let valor = eventObj.currentTarget.innerHTML;
         //alert("Pulsado " + valor);
         if (valor === "+/-")
-            this.result.value = "" + (-(parseFloat(this.result.value)));
+            this.result.val("" + (-(parseFloat(this.result.val()))));
         else if (valor === ".")
         {
-            if (!this.result.value.includes("."))
+            if (!this.result.val().includes("."))
             {
-                this.result.value += valor;
+                this.result.val(this.result.val() + valor);
             }
         } else
         {
-            this.result.value += valor;
-            this.result.value = parseFloat(this.result.value);
+            this.result.val(this.result.val() + valor);
+            this.result.val(parseFloat(this.result.val()));
         }
     }
     operadorPulsado(evObj)
@@ -40,13 +41,13 @@ class Calculadora
             this.calcular();
         }
 
-        this.men = parseFloat(this.result.value);
+        this.men = parseFloat(this.result.val());
         //Subir a caja de texto valor anterior y operador
 
         if (this.operador !== "=" && operadorActual !== "=")
         {
-            this.anterior.value = `${this.men} ${this.operador}`;
-            this.result.value = "0";
+            this.anterior.val(`${this.men} ${this.operador}`);
+            this.result.val("0");
             this.operador = operadorActual;
         } else
         {
@@ -60,35 +61,54 @@ class Calculadora
     {
         if (this.operador !== "=")
         {
-            let valActual = parseFloat(this.result.value);
+            let valActual = parseFloat(this.result.val());
             let resultado = eval(this.men.toString() + this.operador + valActual);
-            this.result.value = resultado;
+            this.result.val(resultado);
+            $("#anterior").css("background-color", "green");
         }
 
     }
 }
 ;
 let calculadora = null;
-window.onload = function ()
+
+
+let inicializacion = function ()
 {
-    let botones = document.getElementsByClassName("num"); //Array de botones
-    let botonesOp = document.getElementsByClassName("oper");
     calculadora = new Calculadora();
-    for (let boton of botones)
+    //Con JQuery
+    $(".num").click((evtObj) =>
     {
-        boton.addEventListener("click", (evtObj) =>
-        {
-            calculadora.numeroPulsado(evtObj)
-        });
-    }
-    for (let botOp of botonesOp)
+        calculadora.numeroPulsado(evtObj);
+        var colorR = Math.floor((Math.random() * 256));
+        var colorG = Math.floor((Math.random() * 256));
+        var colorB = Math.floor((Math.random() * 256));
+        $(".num").css("background-color", "rgb(" + colorR + "," + colorG + "," + colorB + ")");
+    });
+    $(".oper").click((evObj) =>
     {
-        botOp.addEventListener("click", (evObj) =>
-        {
-            calculadora.operadorPulsado(evObj);
-        });
-    }
+        calculadora.operadorPulsado(evObj);
+    })
+    //Javascript
+    //let botones = document.getElementsByClassName("num"); //Array de botones
+    //for (let boton of botones)
+    //{
+    //boton.addEventListener("click", (evtObj) =>
+    //{
+    //  calculadora.numeroPulsado(evtObj);
+    //});
+    //}
+    //$(".num")
+//    let botonesOp = document.getElementsByClassName("oper");
+//    for (let botOp of botonesOp)
+//    {
+//        botOp.addEventListener("click", (evObj) =>
+//        {
+//            calculadora.operadorPulsado(evObj);
+//        });
+//    }
 };
+$(document).ready(inicializacion);
 
 
 
