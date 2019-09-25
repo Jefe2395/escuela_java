@@ -4,6 +4,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import threads.HiloFichero;
+import threads.StrAuxV1;
+import threads.StrAuxV2;
+import threads.StrAuxV3;
 
 /**
  *
@@ -35,6 +39,7 @@ public class TestEjemplosHilos {
 
     @Test
     public void probandoClasesConNombre() {
+
         ProcesoA procA = new ProcesoA();
         Thread procB = new Thread() {
             @Override
@@ -50,7 +55,7 @@ public class TestEjemplosHilos {
             }
 
         };
-
+       
         procA.start();
         procB.start();
         try {
