@@ -20,7 +20,12 @@ public class TestEjemplosHilos {
 
         public void mostrarLista() {
             for (int i = 0; i < 200; i++) {
-                System.out.println("Proceso A: " + i);
+                try {
+                    System.out.println("Proceso A: " + i);
+                    Thread.sleep(3);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(TestEjemplosHilos.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }
@@ -35,7 +40,12 @@ public class TestEjemplosHilos {
             @Override
             public void run() {
                 for (int j = 0; j < 200; j++) {
-                    System.out.println("Proceso B: " + j);
+                    try {
+                        System.out.println("Proceso B: " + j);
+                        Thread.sleep(3);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(TestEjemplosHilos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
 
