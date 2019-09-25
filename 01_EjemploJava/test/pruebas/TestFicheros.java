@@ -15,13 +15,13 @@ public class TestFicheros {
     {        
     }
     
-    //@Test
+    @Test
     public void generacionFicheroAleatorio()
     {
         HiloFichero hilo= new HiloFichero();
         hilo.crearFicheroEjem("C:\\Users\\usuario\\Desktop\\Escuela_Java\\escuela_java.git\\01_EjemploJava\\texto_esp.txt");
     }
-    @Test
+    //@Test
     public void leerFichero()
     {
         HiloFichero hilo= new HiloFichero(new StrAuxV1());

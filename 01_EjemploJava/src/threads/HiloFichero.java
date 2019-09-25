@@ -46,7 +46,7 @@ public class HiloFichero extends Observable{
 
         try {
             fich = new FileWriter(rutaFich, false);
-            for (int i = 0; i < 50000; i++) {
+            for (int i = 0; i < 10000000; i++) {
                 //Numero aleatorio entre 0 y 2 (3-1)
                 if (r.nextInt(3) == 0) {
                     fich.write(palabras[r.nextInt(palabras.length)]);
