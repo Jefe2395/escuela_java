@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -14,12 +16,12 @@ import java.util.logging.Logger;
 /**
  * @author Jaime Palomo
  */
-public class HiloFichero {
+public class HiloFichero extends Observable{
 
     private IStrAux IstrAux;
 
     public HiloFichero() {
-        IstrAux=new StrAuxV1();
+        IstrAux = new StrAuxV1();
     }
 
     public HiloFichero(IStrAux IstrAux) {
@@ -82,7 +84,8 @@ public class HiloFichero {
             escaner = new Scanner(fich);
             while (escaner.hasNextLine()) {
                 String linea = escaner.nextLine();
-                System.out.println(IstrAux.quitarEspaciosSobrantes(linea));
+                //System.out.println(IstrAux.quitarEspaciosSobrantes(linea));
+                IstrAux.quitarEspaciosSobrantes(linea);
             }
         } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());

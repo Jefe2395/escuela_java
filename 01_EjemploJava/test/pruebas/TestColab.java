@@ -1,6 +1,8 @@
 package pruebas;
 
 import java.util.Date;
+import java.util.Observable;
+import java.util.Observer;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import threads.HiloFichero;
@@ -21,11 +23,23 @@ public class TestColab {
     public void hilosColaboracion() {
         Date fecha1 = new Date();
         double tiempoIni = fecha1.getTime();
-        Thread hilo1 = new Thread() {
+        
+        Observer ob = new Observer() {
+            @Override
+            public void update(Observable o, Object arg) {
+                Date fecha2 = new Date();
+                double tiempoFin = fecha2.getTime();
+                System.out.println("Tiempo entre el inicio y el fin: " + (tiempoFin - tiempoIni) + " milisegundos");
+            }
+        };
+        
+        Thread hilo1 = new Thread(){
             @Override
             public void run() {
                 HiloFichero h1 = new HiloFichero(new StrAuxV1());
+                h1.addObserver(ob);
                 h1.leerFicheroEjem("texto_esp.txt");
+                ob.update(h1, h1);
             }
 
         };
@@ -33,7 +47,9 @@ public class TestColab {
             @Override
             public void run() {
                 HiloFichero h2 = new HiloFichero(new StrAuxV2());
+                h2.addObserver(ob);
                 h2.leerFicheroEjem("texto_esp.txt");
+                ob.update(h2, h2);
             }
 
         };
@@ -41,7 +57,9 @@ public class TestColab {
             @Override
             public void run() {
                 HiloFichero h3 = new HiloFichero(new StrAuxV3());
+                h3.addObserver(ob);
                 h3.leerFicheroEjem("texto_esp.txt");
+                ob.update(h3, h3);
             }
 
         };
@@ -56,30 +74,29 @@ public class TestColab {
         } catch (InterruptedException e) {
             System.out.println("Error! " + e.getMessage());
         }
-
-        System.out.println("Finalizo");
-
         Date fecha2 = new Date();
         double tiempoFin = fecha2.getTime();
 
-        System.out.println("Tiempo entre el inicio y el fin: " + (tiempoFin - tiempoIni) + " milisegundos");
+        
     }
     @Test
     public void ejemplo1(){
         
         double millis = (new Date()).getTime();
-        
         HiloFichero hiloFichero= new HiloFichero(new StrAuxV1());
         hiloFichero.leerFicheroEjem("texto_esp.txt");
-        
+        double millis2 = (new Date()).getTime();
         HiloFichero hiloFichero2= new HiloFichero(new StrAuxV2());
         hiloFichero2.leerFicheroEjem("texto_esp.txt");
-        
+        double millis3 = (new Date()).getTime();
         HiloFichero hiloFichero3= new HiloFichero(new StrAuxV3());
         hiloFichero3.leerFicheroEjem("texto_esp.txt");
-        
         double millisFinal = (new Date()).getTime();
-        System.out.println("Ha tardado: " + (millisFinal - millis) + " milisegundos");
+        
+        System.out.println("\nHa tardado: " + (millis2 - millis) + " milisegundos primera ejecucion");
+        System.out.println("Ha tardado: " + (millis3 - millis2) + " milisegundos segunda");
+        System.out.println("Ha tardado: " + (millisFinal - millis3) + " milisegundos tercera");
+        System.out.println("Ha tardado: " + (millisFinal - millis) + " milisegundos en total");
         
     }
     
