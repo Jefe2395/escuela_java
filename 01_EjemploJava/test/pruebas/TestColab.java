@@ -25,7 +25,7 @@ public class TestColab {
             @Override
             public void run() {
                 HiloFichero h1 = new HiloFichero(new StrAuxV1());
-                h1.leerFicheroEjem("C:\\Users\\usuario\\Desktop\\Escuela_Java\\escuela_java.git\\01_EjemploJava\\texto_esp.txt");                      
+                h1.leerFicheroEjem("C:\\Users\\usuario\\Desktop\\Escuela_Java\\escuela_java.git\\01_EjemploJava\\texto_esp.txt");
             }
 
         };
@@ -45,26 +45,23 @@ public class TestColab {
             }
 
         };
-        
+
         hilo1.start();
         hilo2.start();
         hilo3.start();
-        try
-        {
-        hilo1.join();
-        hilo2.join();
-        hilo3.join();
+        try {
+            hilo1.join();
+            hilo2.join();
+            hilo3.join();
+        } catch (InterruptedException e) {
+            System.out.println("Error! " + e.getMessage());
         }
-        catch(InterruptedException e)
-        {
-            System.out.println("Error! "+ e.getMessage());
-        }
-        
+
         System.out.println("Finalizo");
-        
-        Date fecha2=new Date();
-        double tiempoFin= fecha2.getTime();
-        
-        System.out.println("Tiempo entre el inicio y el fin: "+ (tiempoFin-tiempoIni)+ " milisegundos");
+
+        Date fecha2 = new Date();
+        double tiempoFin = fecha2.getTime();
+
+        System.out.println("Tiempo entre el inicio y el fin: " + (tiempoFin - tiempoIni) + " milisegundos");
     }
 }
