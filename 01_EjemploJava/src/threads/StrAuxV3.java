@@ -9,7 +9,7 @@ public class StrAuxV3 implements IStrAux {
     public String quitarEspaciosSobrantes(String texto) {
         texto = texto.trim();
 
-        while (texto.contains(" ")) {
+        while (texto.contains("  ")) {
             texto = texto.replace("  ", " ");
         }
         return texto;
