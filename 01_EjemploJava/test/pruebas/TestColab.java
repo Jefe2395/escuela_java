@@ -25,7 +25,7 @@ public class TestColab {
             @Override
             public void run() {
                 HiloFichero h1 = new HiloFichero(new StrAuxV1());
-                h1.leerFicheroEjem("C:\\Users\\usuario\\Desktop\\Escuela_Java\\escuela_java.git\\01_EjemploJava\\texto_esp.txt");
+                h1.leerFicheroEjem("texto_esp.txt");
             }
 
         };
@@ -33,7 +33,7 @@ public class TestColab {
             @Override
             public void run() {
                 HiloFichero h2 = new HiloFichero(new StrAuxV2());
-                h2.leerFicheroEjem("C:\\Users\\usuario\\Desktop\\Escuela_Java\\escuela_java.git\\01_EjemploJava\\texto_esp.txt");
+                h2.leerFicheroEjem("texto_esp.txt");
             }
 
         };
@@ -41,7 +41,7 @@ public class TestColab {
             @Override
             public void run() {
                 HiloFichero h3 = new HiloFichero(new StrAuxV3());
-                h3.leerFicheroEjem("C:\\Users\\usuario\\Desktop\\Escuela_Java\\escuela_java.git\\01_EjemploJava\\texto_esp.txt");
+                h3.leerFicheroEjem("texto_esp.txt");
             }
 
         };
@@ -70,13 +70,13 @@ public class TestColab {
         double millis = (new Date()).getTime();
         
         HiloFichero hiloFichero= new HiloFichero(new StrAuxV1());
-        hiloFichero.leerFicheroEjem("C:\\Users\\usuario\\Desktop\\ESCUELA_JAVA\\escuela_java.git\\01_EjemploJava\\texto_esp.txt");
+        hiloFichero.leerFicheroEjem("texto_esp.txt");
         
         HiloFichero hiloFichero2= new HiloFichero(new StrAuxV2());
-        hiloFichero2.leerFicheroEjem("C:\\Users\\usuario\\Desktop\\ESCUELA_JAVA\\escuela_java.git\\01_EjemploJava\\texto_esp.txt");
+        hiloFichero2.leerFicheroEjem("texto_esp.txt");
         
         HiloFichero hiloFichero3= new HiloFichero(new StrAuxV3());
-        hiloFichero3.leerFicheroEjem("C:\\Users\\usuario\\Desktop\\ESCUELA_JAVA\\escuela_java.git\\01_EjemploJava\\texto_esp.txt");
+        hiloFichero3.leerFicheroEjem("texto_esp.txt");
         
         double millisFinal = (new Date()).getTime();
         System.out.println("Ha tardado: " + (millisFinal - millis) + " milisegundos");
