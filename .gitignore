@@ -28,3 +28,6 @@ hs_err_pid*
 /JavaApplication2/nbproject/private/
 /03_WebServers/nbproject/private/
 /03_WebServers/build/
+/03_WebServers/dist/
+/04_Ejemplo_MVC_JSP/nbproject/private/
+/04_Ejemplo_MVC_JSP/build/

@@ -3,16 +3,11 @@
     Created on : 26-sep-2019, 10:24:51
     Author     : usuario
 --%>
-
+<%@include file="head.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./estilos/estilos.jsp"/>
-    </head>
+    <%= head("Registro")%>
     <body>
         <%@include file="cabecera.jsp" %>
         <form name='form1' method='post' action='./param.jsp'>
