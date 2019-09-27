@@ -17,5 +17,7 @@
         <input id="nombre" readonly value="<%= request.getParameter("nombre") %>"/>
         <label for="edad">Edad </label>
         <input id="edad" readonly value="<%= request.getParameter("edad") %>"/>
+        <label for="edad">Correo </label>
+        <input id="email" readonly value="<%= request.getParameter("email") %>"/>
     </body>
 </html>

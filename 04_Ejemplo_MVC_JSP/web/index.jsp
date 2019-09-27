@@ -14,15 +14,27 @@
                     <td><input type='text' name='nombre' id='nombre'/></td></tr>
                 <tr><td>Edad:</td>  
                     <td><input type='number' name='edad' id='edad'/></td></tr>
+                <tr><td>Email:</td>  
+                    <td><input type='email' name='email' id='email'/></td></tr>
+                <tr><td>Password:</td>  
+                    <td><input type='password' name='psw' id='pws'/></td></tr>
             </table>
             <input type='submit' value='Enviar'/>             
         </form>
-        <h2>Buscar persona</h2>
+        <h2>Buscar por nombre</h2>
         <form name='formBusq' method='get' action='./personas.do'>            
             <table border='1'>
                 <tr><td>Nombre:</td>  
                     <td><input type='text' name='nombre' id='nombre'/></td>
-                    <td><input type='submit' value='Buscar'/>  </td></tr>
+                    <td><input type='submit' name='btn' value='BuscarNombre'/>  </td></tr>
+            </table>                       
+        </form>
+        <h2>Buscar por email</h2>
+        <form name='formBusqEmail' method='get' action='./personas.do'>            
+            <table border='1'>
+                <tr><td>Email:</td>  
+                    <td><input type='email' name='email' id='nombre'/></td>
+                    <td><input type='submit' name='btn' value='BuscarEmail'/>  </td></tr>
             </table>                       
         </form>
     </body>

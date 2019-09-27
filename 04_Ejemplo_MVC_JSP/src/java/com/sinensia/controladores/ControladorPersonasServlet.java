@@ -23,12 +23,24 @@ public class ControladorPersonasServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nombre = request.getParameter("nombre"); // name del INPUT
-        // String edad = request.getParameter("edad"); 
         
-        Persona p = ServicioPersona.getInstancia().getPersona(nombre);
-        request.getSession().setAttribute("resultadoBusq", p);
-        request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+        String button= request.getParameter("btn");
+        if(button.equals("BuscarNombre"))
+        {
+            String nombre = request.getParameter("nombre"); // name del INPUT
+            Persona p = ServicioPersona.getInstancia().getPersona(nombre);
+            request.getSession().setAttribute("resultadoBusq", p);
+            request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+        }
+        
+        if(button.equals("BuscarEmail"))
+        {
+            String email = request.getParameter("email");
+            Persona p = ServicioPersona.getInstancia().getPersonaByEmail(email);
+            request.getSession().setAttribute("resultadoBusq", p);
+            request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+        }
+        // String edad = request.getParameter("edad");
     }
     
     @Override
@@ -38,7 +50,7 @@ public class ControladorPersonasServlet extends HttpServlet {
         String nombre = request.getParameter("nombre"); // name del INPUT
         String edad = request.getParameter("edad"); 
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        String password = request.getParameter("psw");
         
         try {
             Persona p = ServicioPersona.getInstancia().addPersonas(nombre, edad, email, password);

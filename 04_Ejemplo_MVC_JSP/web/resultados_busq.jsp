@@ -22,6 +22,8 @@
                        value="<%= pers.getNombre() %>"/>
                 <label for="edad">Edad </label>
                 <input id="edad" readonly value="<%= pers.getEdad() %>"/>
+                <label for="email">Email </label>
+                <input id="email" readonly value="<%= pers.getEmail()%>"/>
         <% } else { %>            
                 <span style="color: red">
                     No se han encontrado personas
