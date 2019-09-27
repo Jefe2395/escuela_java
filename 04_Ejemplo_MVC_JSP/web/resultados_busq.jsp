@@ -21,7 +21,7 @@
         <% if (p != null) { %>
             <form name='formmod' method='post' action='./personas.do'>
                 <label for="nombre">Nombre: </label>
-                <input id="nombre" name="nombre" readonly 
+                <input id="nombre" name="nombre" 
                        value="<%= p.getNombre() %>"/>
                 <label for="edad">Edad </label>
                 <input id="edad" name="edad" value="<%= p.getEdad() %>"/>
