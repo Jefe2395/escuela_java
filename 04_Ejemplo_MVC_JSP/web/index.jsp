@@ -19,7 +19,7 @@
                 <tr><td>Password:</td>  
                     <td><input type='password' name='psw' id='pws'/></td></tr>
             </table>
-            <input type='submit' value='Enviar'/>             
+            <input type='submit' name='btn' value='Enviar'/>             
         </form>
         <h2>Buscar por nombre</h2>
         <form name='formBusq' method='get' action='./personas.do'>            
