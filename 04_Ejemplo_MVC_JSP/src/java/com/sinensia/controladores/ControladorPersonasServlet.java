@@ -9,6 +9,7 @@ import com.sinensia.modelo.Persona;
 import com.sinensia.modelo.logica.ServicioPersona;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javafx.scene.control.Alert;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +30,7 @@ public class ControladorPersonasServlet extends HttpServlet {
         if(button.equals("BuscarNombre"))
         {
             String nombre = request.getParameter("nombre"); // name del INPUT
-            Persona p = ServicioPersona.getInstancia().getPersona(nombre);
+            ArrayList<Persona> p = ServicioPersona.getInstancia().getAllPersonasByNombre(nombre);
             request.getSession().setAttribute("resultadoBusq", p);
             request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
         }
@@ -93,9 +94,9 @@ public class ControladorPersonasServlet extends HttpServlet {
             String edad = request.getParameter("edad");
             String email = request.getParameter("email");
             if (ServicioPersona.getInstancia().modificarPersona(nombre, edad, email)) {
-                    request.getRequestDispatcher("exitoBorrado.jsp").forward(request, response);
+                    request.getRequestDispatcher("exitoModificar.jsp").forward(request, response);
             } else {
-                 request.getRequestDispatcher("errorBorrado.jsp").forward(request, response);          
+                 request.getRequestDispatcher("errorModificado.jsp").forward(request, response);          
             }
         }
     }

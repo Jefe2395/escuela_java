@@ -4,6 +4,7 @@
     Author     : alumno
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.sinensia.modelo.Persona"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,23 +16,24 @@
     <body>
         <h1>Ejemplo MVC con JSP y Servlet</h1>
         <h2>Usuario</h2>
-        <% Persona pers = (Persona) session.getAttribute("resultadoBusq"); %>
-        <% if (pers != null) { %>
+        <% ArrayList<Persona> pers = (ArrayList<Persona>) session.getAttribute("resultadoBusq"); %>
+        <% for(Persona p :pers) { %>
+        <% if (p != null) { %>
             <form name='formmod' method='post' action='./personas.do'>
                 <label for="nombre">Nombre: </label>
                 <input id="nombre" name="nombre" readonly 
-                       value="<%= pers.getNombre() %>"/>
+                       value="<%= p.getNombre() %>"/>
                 <label for="edad">Edad </label>
-                <input id="edad" name="edad" value="<%= pers.getEdad() %>"/>
+                <input id="edad" name="edad" value="<%= p.getEdad() %>"/>
                 <label for="email">Email </label>
-                <input id="email" name="email" value="<%= pers.getEmail()%>"/>
+                <input id="email" name="email" value="<%= p.getEmail()%>"/>
                 <input type='submit' name='btn' value='ModificarPersona'/>
                 <input type='submit' name='btn' value='EliminarPersona'/>
             </form>
-        <% } else { %>            
+        <% }  else { %>            
                 <span style="color: red">
                     No se han encontrado personas
                 </span>
-        <% } %>
+        <% }}%>
     </body>
 </html>
