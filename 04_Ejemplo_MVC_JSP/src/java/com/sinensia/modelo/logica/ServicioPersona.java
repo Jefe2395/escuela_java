@@ -84,6 +84,14 @@ public class ServicioPersona {
         }
         return null;
     }
-    
+    public boolean eliminarPersonaByNombre(String nombre)
+    {
+        Persona p = getPersona(nombre);
+        if(p!=null)
+        {
+            return personas.remove(p);
+        }
+        return false;
+    }
     
 }
