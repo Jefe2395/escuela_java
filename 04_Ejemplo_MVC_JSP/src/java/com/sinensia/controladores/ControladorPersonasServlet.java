@@ -38,7 +38,7 @@ public class ControladorPersonasServlet extends HttpServlet {
         if(button.equals("BuscarEmail"))
         {
             String email = request.getParameter("email");
-            Persona p = ServicioPersona.getInstancia().getPersonaByEmail(email);
+            ArrayList<Persona> p = ServicioPersona.getInstancia().getAllPersonasByEmail(email);
             request.getSession().setAttribute("resultadoBusq", p);
             request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
         }
@@ -81,8 +81,8 @@ public class ControladorPersonasServlet extends HttpServlet {
         
         if(button.equals("EliminarPersona"))
         {
-            String nombre = request.getParameter("nombre");
-            if (ServicioPersona.getInstancia().eliminarPersonaByNombre(nombre)) {
+            String email = request.getParameter("email");
+            if (ServicioPersona.getInstancia().eliminarPersonaByEmail(email)) {
                     request.getRequestDispatcher("exitoBorrado.jsp").forward(request, response);
             } else {
                  request.getRequestDispatcher("errorBorrado.jsp").forward(request, response);          
