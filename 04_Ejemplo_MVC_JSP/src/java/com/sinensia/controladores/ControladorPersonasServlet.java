@@ -38,7 +38,7 @@ public class ControladorPersonasServlet extends HttpServlet {
         if(button.equals("BuscarEmail"))
         {
             String email = request.getParameter("email");
-            Persona p = ServicioPersona.getInstancia().getPersonaByEmail(email);
+            ArrayList<Persona> p = ServicioPersona.getInstancia().getAllPersonasByEmail(email);
             request.getSession().setAttribute("resultadoBusq", p);
             request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
         }

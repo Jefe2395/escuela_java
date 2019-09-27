@@ -118,5 +118,13 @@ public class ServicioPersona {
         }
         return aux;
     }
-    
+    public ArrayList<Persona> getAllPersonasByEmail(String email)
+    {
+        ArrayList<Persona> aux = new ArrayList<>();
+        for (Persona persona : personas) {
+            if(persona.getEmail().equalsIgnoreCase(email))
+                aux.add(persona);
+        }
+        return aux;
+    }
 }
