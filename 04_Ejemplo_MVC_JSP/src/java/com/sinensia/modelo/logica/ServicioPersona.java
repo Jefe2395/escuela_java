@@ -93,6 +93,21 @@ public class ServicioPersona {
         }
         return false;
     }
+    public boolean modificarPersona(String nombre, String edad, String email)
+    {
+        Persona p= getPersona(nombre);
+        Persona aux;
+        if(p!=null)
+        {
+            aux=p;
+            aux.setNombre(nombre);
+            aux.setEdad(Integer.parseInt(edad));
+            aux.setEmail(email);
+            p=aux;
+            return true;
+        }
+        return false;
+    }
     
     public ArrayList<Persona> getAllPersonasByNombre(String nombre)
     {

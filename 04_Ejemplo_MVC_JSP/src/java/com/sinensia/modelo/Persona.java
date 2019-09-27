@@ -29,6 +29,10 @@ public class Persona {
         this.email = email;
         this.password = password;
     }
+
+    public Persona() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public String getPassword() {
         return password;
