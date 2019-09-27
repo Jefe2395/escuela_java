@@ -56,13 +56,14 @@ public class ServicioPersona {
             throw new IllegalArgumentException("La contraseña esta vacia");
         } else if (!expresionContra.matcher(password).find()) {
             throw new IllegalArgumentException("La contraseña debe ser mayor de 8 caracteres, tener al menos una minuscula, una mayuscula");
-        }else{
+        } else if (getPersonaByEmail(email) != null) {
+            throw new IllegalArgumentException("Ya existe una persona con el mismo correo");
+        } else {
             Persona p = new Persona(nombre, Integer.parseInt(edad), email, password);
             personas.add(p);
             return p;
         }
 
-        
     }
 
     public Persona getPersona(String nombre) {
@@ -73,57 +74,54 @@ public class ServicioPersona {
         }
         return null;
     }
-    public Persona getPersonaByEmail(String email)
-    {
-        for(Persona p: personas)
-        {
-            if(p.getEmail().equalsIgnoreCase(email))
-            {
+
+    public Persona getPersonaByEmail(String email) {
+        for (Persona p : personas) {
+            if (p.getEmail().equalsIgnoreCase(email)) {
                 return p;
             }
         }
         return null;
     }
-    public boolean eliminarPersonaByNombre(String nombre)
-    {
+
+    public boolean eliminarPersonaByNombre(String nombre) {
         Persona p = getPersona(nombre);
-        if(p!=null)
-        {
+        if (p != null) {
             return personas.remove(p);
         }
         return false;
     }
-    public boolean modificarPersona(String nombre, String edad, String email)
-    {
-        Persona p= getPersona(nombre);
+
+    public boolean modificarPersona(String nombre, String edad, String email) {
+        Persona p = getPersona(nombre);
         Persona aux;
-        if(p!=null)
-        {
-            aux=p;
+        if (p != null) {
+            aux = p;
             aux.setNombre(nombre);
             aux.setEdad(Integer.parseInt(edad));
             aux.setEmail(email);
-            p=aux;
+            p = aux;
             return true;
         }
         return false;
     }
-    
-    public ArrayList<Persona> getAllPersonasByNombre(String nombre)
-    {
+
+    public ArrayList<Persona> getAllPersonasByNombre(String nombre) {
         ArrayList<Persona> aux = new ArrayList<>();
         for (Persona persona : personas) {
-            if(persona.getNombre().equalsIgnoreCase(nombre))
+            if (persona.getNombre().equalsIgnoreCase(nombre)) {
                 aux.add(persona);
+            }
         }
         return aux;
     }
-    public ArrayList<Persona> getAllPersonasByEmail(String email)
-    {
+
+    public ArrayList<Persona> getAllPersonasByEmail(String email) {
         ArrayList<Persona> aux = new ArrayList<>();
         for (Persona persona : personas) {
-            if(persona.getEmail().equalsIgnoreCase(email))
+            if (persona.getEmail().equalsIgnoreCase(email)) {
                 aux.add(persona);
+            }
         }
         return aux;
     }
