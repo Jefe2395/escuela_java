@@ -1,7 +1,7 @@
 <%-- 
     Document   : error
-    Created on : 26-sep-2019, 13:43:16
-    Author     : usuario
+    Created on : 26-sep-2019, 13:42:14
+    Author     : alumno
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,9 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Error - No se ha registrado</title>
+        <title>Error en registro</title>
     </head>
     <body>
-        <h1>Error - No se ha registrado</h1>
+        <h1>Error en registro</h1>
+        Error: 
+        <span style="color: red">
+            <%= /*request.getSession()*/ session.getAttribute("mensajeError") %>                    
+        </span>
     </body>
 </html>

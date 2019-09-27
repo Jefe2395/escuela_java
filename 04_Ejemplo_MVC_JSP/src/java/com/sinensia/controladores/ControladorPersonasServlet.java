@@ -14,27 +14,43 @@ import javax.servlet.http.HttpServletResponse;
  * @author usuario
  */
 public class ControladorPersonasServlet extends HttpServlet {
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String nombre = request.getParameter("nombre"); // name del INPUT
+        // String edad = request.getParameter("edad"); 
+
+        Persona p = ServicioPersona.getInstancia().getPersona(nombre);
+        request.getSession().setAttribute("resultadoBusq", p);
+        request.getRequestDispatcher("resultados_busq.jsp").forward(request, response);
+
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nombre = request.getParameter("nombre"); //nombre del input
         String edad = request.getParameter("edad");
-        
-        Persona p = ServicioPersona.getInstancia().addPersonas(nombre, edad);
-        if (p == null) {
+        try {
+            Persona p = ServicioPersona.getInstancia().addPersonas(nombre, edad);
+            if (p == null) {
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            } else {
+                request.getRequestDispatcher("exito.jsp").forward(request, response);
+            }
+        } catch (NumberFormatException ex) {
+            request.getSession().setAttribute("mensajeError", "Error numérico: " + ex.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("exito.jsp").forward(request, response);
+        } catch (IllegalArgumentException ex) {
+            request.getSession().setAttribute("mensajeError", "Error en campos: " + ex.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        } catch (Exception ex) {
+            request.getSession().setAttribute("mensajeError", "Error genérico: " + ex.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
-    
+
     @Override
     public String getServletInfo() {
         return "Short description";
