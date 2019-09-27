@@ -17,13 +17,17 @@
         <h2>Usuario</h2>
         <% Persona pers = (Persona) session.getAttribute("resultadoBusq"); %>
         <% if (pers != null) { %>
+            <form name='formmod' method='post' action='./personas.do'>
                 <label for="nombre">Nombre: </label>
-                <input id="nombre" readonly 
+                <input id="nombre" name="nombre" readonly 
                        value="<%= pers.getNombre() %>"/>
                 <label for="edad">Edad </label>
                 <input id="edad" readonly value="<%= pers.getEdad() %>"/>
                 <label for="email">Email </label>
                 <input id="email" readonly value="<%= pers.getEmail()%>"/>
+                <input type='submit' name='btn' value='ModificarPersona'/>
+                <input type='submit' name='btn' value='EliminarPersona'/>
+            </form>
         <% } else { %>            
                 <span style="color: red">
                     No se han encontrado personas
