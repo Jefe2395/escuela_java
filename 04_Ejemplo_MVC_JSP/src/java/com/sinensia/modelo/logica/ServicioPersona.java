@@ -94,4 +94,14 @@ public class ServicioPersona {
         return false;
     }
     
+    public ArrayList<Persona> getAllPersonasByNombre(String nombre)
+    {
+        ArrayList<Persona> aux = new ArrayList<>();
+        for (Persona persona : personas) {
+            if(persona.getNombre().equalsIgnoreCase(nombre))
+                aux.add(persona);
+        }
+        return aux;
+    }
+    
 }
