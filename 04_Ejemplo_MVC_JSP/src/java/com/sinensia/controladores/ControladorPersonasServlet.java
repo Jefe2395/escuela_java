@@ -87,6 +87,17 @@ public class ControladorPersonasServlet extends HttpServlet {
                  request.getRequestDispatcher("errorBorrado.jsp").forward(request, response);          
             }
         }
+        if(button.equals("ModificarPersona"))
+        {
+            String nombre = request.getParameter("nombre");
+            String edad = request.getParameter("edad");
+            String email = request.getParameter("email");
+            if (ServicioPersona.getInstancia().modificarPersona(nombre, edad, email)) {
+                    request.getRequestDispatcher("exitoBorrado.jsp").forward(request, response);
+            } else {
+                 request.getRequestDispatcher("errorBorrado.jsp").forward(request, response);          
+            }
+        }
     }
 
     /**

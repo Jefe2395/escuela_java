@@ -22,9 +22,9 @@
                 <input id="nombre" name="nombre" readonly 
                        value="<%= pers.getNombre() %>"/>
                 <label for="edad">Edad </label>
-                <input id="edad" readonly value="<%= pers.getEdad() %>"/>
+                <input id="edad" name="edad" value="<%= pers.getEdad() %>"/>
                 <label for="email">Email </label>
-                <input id="email" readonly value="<%= pers.getEmail()%>"/>
+                <input id="email" name="email" value="<%= pers.getEmail()%>"/>
                 <input type='submit' name='btn' value='ModificarPersona'/>
                 <input type='submit' name='btn' value='EliminarPersona'/>
             </form>
