@@ -1,5 +1,6 @@
 package com.sinensia.controlador;
 
+import com.sinensia.modelo.Juego;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
