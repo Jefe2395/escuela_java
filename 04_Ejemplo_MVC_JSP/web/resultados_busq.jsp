@@ -26,7 +26,7 @@
                 <label for="edad">Edad </label>
                 <input id="edad" name="edad" value="<%= p.getEdad() %>"/>
                 <label for="email">Email </label>
-                <input id="email" name="email" readonly value="<%= p.getEmail()%>"/>
+                <input id="email" name="email" value="<%= p.getEmail()%>"/>
                 <input type='submit' name='btn' value='ModificarPersona'/>
                 <input type='submit' name='btn' value='EliminarPersona'/>
             </form>

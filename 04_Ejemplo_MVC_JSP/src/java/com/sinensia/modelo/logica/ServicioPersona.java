@@ -84,39 +84,28 @@ public class ServicioPersona {
         }
         return null;
     }
-    public boolean eliminarPersonaByEmail(String correo)
+    public boolean eliminarPersonaByNombre(String nombre)
     {
-        Persona p = getPersonaByEmail(correo);
+        Persona p = getPersona(nombre);
         if(p!=null)
         {
             return personas.remove(p);
         }
         return false;
-        
     }
     public boolean modificarPersona(String nombre, String edad, String email)
     {
-//        Persona p= getPersona(nombre);
-//        Persona aux;
-//        if(p!=null)
-//        {
-//            aux=p;
-//            aux.setNombre(nombre);
-//            aux.setEdad(Integer.parseInt(edad));
-//            aux.setEmail(email);
-//            p=aux;
-//            return true;
-//        }
-//        return false;
-        for (Persona persona : personas) {
-            if(persona.getEmail().equals(email))
-            {
-                persona.setNombre(nombre);
-                persona.setEdad(Integer.parseInt(edad));
-                return true;
-            }
+        Persona p= getPersona(nombre);
+        Persona aux;
+        if(p!=null)
+        {
+            aux=p;
+            aux.setNombre(nombre);
+            aux.setEdad(Integer.parseInt(edad));
+            aux.setEmail(email);
+            p=aux;
+            return true;
         }
-        
         return false;
     }
     
@@ -129,14 +118,5 @@ public class ServicioPersona {
         }
         return aux;
     }
-    public ArrayList<Persona> getAllPersonasByEmail(String email)
-    {
-        ArrayList<Persona> aux = new ArrayList<>();
-        for (Persona persona : personas) {
-            if(persona.getEmail().equalsIgnoreCase(email))
-                aux.add(persona);
-        }
-        return aux;
-    }
+    
 }
-
