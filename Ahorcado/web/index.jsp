@@ -20,7 +20,9 @@
             </div>
             
             <% 
-            
+                for (int i = 0; i< ((String)session.getAttribute("palabra")).length(); i++) {
+                    
+                }
 
 
             %>
