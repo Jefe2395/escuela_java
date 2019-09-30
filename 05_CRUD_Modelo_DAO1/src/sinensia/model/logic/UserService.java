@@ -1,5 +1,6 @@
 package sinensia.model.logic;
 
+import java.sql.SQLException;
 import java.util.List;
 import sinensia.model.User;
 import sinensia.persistence.IUserDAO;
@@ -20,7 +21,7 @@ public class UserService {
         this.daoUser = daoUser;
     }
 
-    public User create(String email, String password, String name, int age) {
+    public User create(String email, String password, String name, int age) throws SQLException {
         User u = null;
         if (email != null && password != null && name != null) {
             if (email.length() > 3 && !password.equals("") && !name.equals("") && age > 0) {
@@ -31,7 +32,15 @@ public class UserService {
         return u;
     }
 
-    public List<User> getAll() {
+    public List<User> getAll() throws SQLException {
         return daoUser.getAll();
+    }
+    public boolean borrarPorEmail(String email) throws SQLException
+    {
+        return daoUser.remove(daoUser.getByEmail(email));
+    }
+     public boolean borrarPorID(User user) throws SQLException
+    {
+        return daoUser.remove(user.getId());
     }
 }
