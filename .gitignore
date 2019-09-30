@@ -33,3 +33,8 @@ hs_err_pid*
 /04_Ejemplo_MVC_JSP/build/
 /Ahorcado/nbproject/private/
 /Ahorcado/build/
+/05_CRUD_JSTL_DAO/nbproject/private/
+/05_CRUD_Modelo_DAO/nbproject/private/
+/05_CRUD_Modelo_DAO1/nbproject/private/
+/05_CRUD_Modelo_DAO1/build/
+/05_CRUD_Modelo_DAO1/dist/
