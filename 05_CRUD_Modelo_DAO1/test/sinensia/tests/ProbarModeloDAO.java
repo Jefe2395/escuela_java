@@ -45,7 +45,7 @@ public class ProbarModeloDAO {
     public void tearDown() {
     }
 
-    @Test
+    //@Test
     public void createAndListUserFail() {
         List<User> allUsers;
         try {
@@ -69,7 +69,7 @@ public class ProbarModeloDAO {
         }
     }
 
-    @Test
+    //@Test
     public void creteAndListUsersOK() {
         List<User> allUsers = null;
         try {
@@ -79,7 +79,7 @@ public class ProbarModeloDAO {
             User u7 = userServ.create("ccc@ccc.com", "Pass123", "JeCSE", 26);
             User u8 = userServ.create("hhh@hhh.com", "contrasee", "nhfn", 20);
             userServ.borrarPorID(u8);
-            assertEquals(u6.getNombre(), "AJ J");
+            assertEquals(u6.getName(), "AJ J");
             assertTrue(u7.getEmail().equals("ccc@ccc.com"));
             assertFalse(u8.getAge() != 20);
 
@@ -101,6 +101,20 @@ public class ProbarModeloDAO {
     public void borrar2() {
         try {
             userServ.borrarPorEmail("ccc@ccc.com");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProbarModeloDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Test
+    public void modificar()
+    {
+        try {
+            User usuario= userServ.getOneByEmail("ccc@ccc.com");
+            usuario.setAge(79);
+            usuario.setName("Jose Luis");
+            userServ.modifyUser(usuario);
             
         } catch (SQLException ex) {
             Logger.getLogger(ProbarModeloDAO.class.getName()).log(Level.SEVERE, null, ex);

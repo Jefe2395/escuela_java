@@ -43,4 +43,21 @@ public class UserService {
     {
         return daoUser.remove(user.getId());
     }
+     public User modifyUser(User user) throws SQLException
+     {
+         return daoUser.modifyUser(user);
+     }
+     public User getOneByEmail(String email) throws SQLException    
+     {
+         return daoUser.getByEmail(email);
+     }
+     public boolean delete(Integer id) throws SQLException
+     {
+         return daoUser.remove(daoUser.getById(id));
+     }
+     public User getOneById(int id) throws SQLException
+     {
+         System.out.println(daoUser.getById(id));
+         return daoUser.getById(id);
+     }
 }

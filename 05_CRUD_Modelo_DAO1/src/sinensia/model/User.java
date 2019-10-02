@@ -1,9 +1,11 @@
 package sinensia.model;
 
+import java.io.Serializable;
+
 /**lase para los campos de lso usuarios
  * @author Jaime Palomo
  */
-public class User {
+public class User implements Serializable{
 
     private Integer id;
     private String email;
@@ -78,7 +80,7 @@ public class User {
      *
      * @return the value of nombre
      */
-    public String getNombre() {
+    public String getName() {
         return name;
     }
 
@@ -87,7 +89,7 @@ public class User {
      *
      * @param name new value of nombre
      */
-    public void setNombre(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

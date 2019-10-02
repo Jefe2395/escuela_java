@@ -44,12 +44,12 @@ public class UserDAO_DerbyDB implements IUserDAO {
         PreparedStatement prepStmt = con.prepareCall(sqlQuery);
         prepStmt.setString(1, user.getEmail());
         prepStmt.setString(2, user.getPassword());
-        prepStmt.setString(3, user.getNombre());
+        prepStmt.setString(3, user.getName());
         prepStmt.setInt(4, user.getAge());
         prepStmt.executeUpdate();
 
         //Aqui buscamos el Id a través del email
-        user=getByEmail(user.getEmail());
+        user = getByEmail(user.getEmail());
         con.close();
         return user;
     }
@@ -80,7 +80,7 @@ public class UserDAO_DerbyDB implements IUserDAO {
         Connection con = DriverManager.getConnection(CONEX_DB, USER_DB, PWD_DB);
         String sqlQuery = "DELETE FROM users WHERE id = ?";
         PreparedStatement prepStat = con.prepareCall(sqlQuery);
-        prepStat.setInt(1,id);
+        prepStat.setInt(1, id);
         return prepStat.executeUpdate() != 0;
     }
 
@@ -107,6 +107,34 @@ public class UserDAO_DerbyDB implements IUserDAO {
         return user;
     }
 
+    @Override
+    public User modifyUser(User user) throws SQLException {
+        Connection con = DriverManager.getConnection(CONEX_DB, USER_DB, PWD_DB);
+        String sqlQuery = "UPDATE users SET email = ? , password = ?, name = ?, age=? WHERE id = ?";
+        PreparedStatement prepStat = con.prepareCall(sqlQuery);
+        prepStat.setString(1, user.getEmail());
+        prepStat.setString(2, user.getPassword());
+        prepStat.setString(3, user.getName());
+        prepStat.setInt(4, user.getAge());
+        prepStat.setInt(5, user.getId());
+        prepStat.executeUpdate();
+        return user;
+    }
 
+    @Override
+    public User getById(int id) throws SQLException {
+        Connection con = DriverManager.getConnection(CONEX_DB, USER_DB, PWD_DB);
+        User user = null;
+        String sqlQuery = "Select id,email,password,name,age FROM users WHERE id = ?";
+        PreparedStatement prep = con.prepareCall(sqlQuery);
+        prep.setInt(1, id);
+        ResultSet resul = prep.executeQuery();
+        resul.next();
+        
+        int idUser = resul.getInt("id");
+        user = new User(resul.getString("email"), resul.getString("password"), resul.getString("name"), resul.getInt("age"));
+        user.setId(id);
+        return user;
+    }
 
 }

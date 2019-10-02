@@ -13,7 +13,9 @@ import sinensia.model.User;
 public interface IUserDAO {
     User create(User user) throws SQLException;
     User getByEmail(String email) throws SQLException;
+    User getById(int id) throws SQLException;
     List<User> getAll() throws SQLException;
     boolean remove(int id) throws SQLException;
     boolean remove(User user)throws SQLException;
+    User modifyUser(User user) throws SQLException;
 }
