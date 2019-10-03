@@ -3,8 +3,11 @@ package sinensia.controllers;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -64,11 +67,39 @@ public class UsersController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
+            String email=req.getParameter("email");
+            String password_encrypt= req.getParameter("password_encrypt");
+            if(email != null && password_encrypt != null)
+            {
+                User user= userServ.getValidUser(email, password_encrypt);
+                if(user != null)
+                {
+                req.getSession().setAttribute("userLogged", user);
+                resp.addCookie(new Cookie("email",email));
+                req.getRequestDispatcher("result.jsp").forward(req, resp);
+                }
+                else
+                {
+                    req.getSession().removeAttribute("userLogged");
+                    Cookie coEmail = new Cookie("email", null);
+                    coEmail.setMaxAge(0);
+                    resp.addCookie(coEmail);
+                    throw new Exception ("Error en el enviar email y password");
+                }
+            }
+            else{
             List<User> listUsers = userServ.getAll();
             req.setAttribute("usersList", listUsers);
             req.getRequestDispatcher("list_Users.jsp").forward(req, resp);
-        } catch (Exception e) {
+            }
+        } catch (SQLException e) {
             System.out.println("ERROR!! " + e.getMessage());
+            req.setAttribute("errorMessage", e.getMessage());
+        } catch (Exception ex) {
+            Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+            req.setAttribute("errorMessage", ex.getMessage());
+        } finally {
+            req.getRequestDispatcher("result.jsp").forward(req, resp);
         }
     }
 

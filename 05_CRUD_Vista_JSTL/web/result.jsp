@@ -15,8 +15,8 @@
     <body>
         <h1>Result</h1>
         <br/>
-        <a href="index.html">Inicio</a>
-        <c:catch var="exception">
+        <a href="index.jsp">Inicio</a>
+        <%--<c:catch var="exception">
             <jsp:useBean id="user" type="sinensia.model.User" scope="request">
                 <jsp:getProperty property="*" name="user"/>
             </jsp:useBean>
@@ -34,7 +34,25 @@
             <h3 style="color: orange"> 
                 ${requestScope.errorMessage}
             </h3>
-                <c:remove var="errorMessage" scope="request"/>
+            <c:remove var="errorMessage" scope="request"/>
+        </c:if>--%>
+
+        <br/>
+        <c:catch var="loginException">
+            <jsp:useBean id="userLogged" type="sinensia.model.User" scope="session">
+                <jsp:getProperty property="*" name="userLogged"/>
+            </jsp:useBean>
+            <p>User Logged: ${userLogged.email}</p>
+        </c:catch>
+        <c:if test="${not empty loginException}">
+
+            <p>Error on LOGIN</p>
+        </c:if>
+        <c:if test="${requestScope.errorMessage != null}">
+            <h3 style="color: orange"> 
+                ${requestScope.errorMessage}
+            </h3>
+            <c:remove var="errorMessage" scope="session"/>
         </c:if>
     </body>
 </html>

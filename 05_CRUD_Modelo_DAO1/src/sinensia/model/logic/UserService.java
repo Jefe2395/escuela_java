@@ -57,7 +57,11 @@ public class UserService {
      }
      public User getOneById(int id) throws SQLException
      {
-         System.out.println(daoUser.getById(id));
+        
          return daoUser.getById(id);
+     }
+     public User getValidUser(String email,String password) throws SQLException
+     {
+         return daoUser.validateUser(email, password);
      }
 }

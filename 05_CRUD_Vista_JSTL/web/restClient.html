@@ -1,19 +1,13 @@
-<%-- 
-    Document   : register
-    Created on : 01-oct-2019, 16:00:14
-    Author     : usuario
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Register (Create)</title>
+        <title>Rest Client con Ajax</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Register (Create)</h1>
-        <form name="formLogin" action="users.do" method="post">
+        <div>Rest Client con Ajax</div>
+        <form name="formJSON">
             <label for="email">Email: </label>
             <input id="email" name="email" type="email" placeholder="Write your email..."
                    size="50" maxlength="255" required="required"/>
@@ -28,9 +22,12 @@
             <br/>
             <label for="age">Age: </label>
             <input id="age" name="age" type="number" placeholder="Write your age..."
-                   size="10" maxlength="3" required="required" min="1" max="199"/>
+                   size="10" required="required" min="1" max="199"/>
             <br/>
-            <input type="submit" value="Register please!"/>
         </form>
+        <input type="submit" value="Register please!" onclick="register()"/>
+        <table id="data_table"></table>
+        <script src="js/jquery-3.4.1.js"></script>
+        <script src="js/ajaxRestClient.js"></script>
     </body>
 </html>

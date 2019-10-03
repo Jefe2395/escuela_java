@@ -18,4 +18,5 @@ public interface IUserDAO {
     boolean remove(int id) throws SQLException;
     boolean remove(User user)throws SQLException;
     User modifyUser(User user) throws SQLException;
+    public User validateUser(String email,String pass) throws SQLException;
 }
