@@ -52,4 +52,51 @@ function sendJSONToServer(json)
 
     });
 }
+function modify()
+{
+    var form = document.forms['formJSON'];
+    var array = jQuery(form).serializeArray();
+
+    var json = {};
+
+    jQuery.each(array, function () {
+        json[this.name] = this.value || '';
+    });
+
+    sendJSONTModify(json);
+}
+function sendJSONTModify(json)
+{
+       $.ajax(
+    {
+        type: "PUT",
+        url: "api/users",
+        data: JSON.stringify(json),
+        dataType: 'json'
+   });
+}
+
+function delet()
+{
+    var form = document.forms['formJSON'];
+    var array = jQuery(form).serializeArray();
+
+    var json = {};
+
+    jQuery.each(array, function () {
+        json[this.name] = this.value || '';
+    });
+
+    sendJSONTDelete(json);
+}
+function sendJSONTDelete(json)
+{
+       $.ajax(
+    {
+        type: "DELETE",
+        url: "api/users",
+        data: JSON.stringify(json),
+        dataType: 'json'
+   });
+}
 

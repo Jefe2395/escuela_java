@@ -37,18 +37,17 @@ public class UsersRestController extends HttpServlet {
         resp.setContentType("application/json; charset=UTF-8");
 
         Gson gson = new Gson();
-        User user= gson.fromJson(req.getReader(), User.class);
-        
+        User user = gson.fromJson(req.getReader(), User.class);
+        User newUser;
         try {
             userServ.create(user.getEmail(), user.getPassword(), user.getName(), user.getAge());
-            User newUser= userServ.getOneByEmail(user.getEmail());
-            String json= gson.toJson(newUser);
+            newUser = userServ.getOneByEmail(user.getEmail());
+            String json = gson.toJson(newUser);
             resp.getWriter().print(json);
         } catch (SQLException ex) {
             Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }
 
     @Override
@@ -67,4 +66,46 @@ public class UsersRestController extends HttpServlet {
             resp.getWriter().print("{\"error\", \"" + ex.getMessage() + "\"}");
         }
     }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("application/json; charset=UTF-8");
+
+        Gson gson = new Gson();
+        User user = gson.fromJson(req.getReader(), User.class);
+
+        try {
+
+            User newUser = userServ.getOneByEmail(user.getEmail());
+            newUser.setName(user.getName());
+            newUser.setAge(user.getAge());
+            userServ.modifyUser(newUser);
+            String json = gson.toJson(newUser);
+            resp.getWriter().print(json);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       resp.setContentType("application/json; charset=UTF-8");
+
+        Gson gson = new Gson();
+        User user = gson.fromJson(req.getReader(), User.class);
+
+        try {
+            userServ.borrarPorEmail(user.getEmail());
+            
+            String json = gson.toJson(user);
+            resp.getWriter().print(json);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+
 }
