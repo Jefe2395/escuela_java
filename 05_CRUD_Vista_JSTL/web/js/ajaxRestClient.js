@@ -40,6 +40,7 @@ function register()
     });
 
     sendJSONToServer(json);
+    alert("Register")
 }
 function sendJSONToServer(json)
 {
@@ -64,6 +65,7 @@ function modify()
     });
 
     sendJSONTModify(json);
+    alert("Modify");
 }
 function sendJSONTModify(json)
 {
@@ -88,6 +90,7 @@ function delet()
     });
 
     sendJSONTDelete(json);
+    alert("Delete");
 }
 function sendJSONTDelete(json)
 {
