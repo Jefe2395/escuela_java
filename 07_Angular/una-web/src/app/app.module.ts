@@ -3,14 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MiControlComponent } from './mi-control/mi-control.component';
+import {FormsModule} from '@angular/forms';
+import { HerosListComponent } from './heros-list/heros-list.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MiControlComponent
+    MiControlComponent,
+    HerosListComponent,
+    HeroDetailComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
