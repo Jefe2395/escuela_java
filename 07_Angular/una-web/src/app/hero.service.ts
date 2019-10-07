@@ -20,11 +20,15 @@ export class HeroService {
 
   getHeroes(): Hero[] {
     this.messageService.add('HeroService: capturando heroes');
-    return HEROES;
+    return this.arrayHeroes;
   }
 
   addHero(nameH: string, imagenH: string): void {
     this.messageService.add('Hero added');
     HEROES.push({ id: HEROES.length + 1, name: nameH, imagen: imagenH });
+  }
+
+  getHero(id: number): Hero {
+    return this.arrayHeroes.find( (hero) => hero.id === id );
   }
 }

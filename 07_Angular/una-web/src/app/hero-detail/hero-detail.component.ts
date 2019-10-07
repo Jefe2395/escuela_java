@@ -23,7 +23,7 @@ export class HeroDetailComponent implements OnInit {
   }
   getHero(): void {
     // Cogemos el id del parámetro de la ruta /detail/:id
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = +this.route.snapshot.paramMap.get('id');
     this.hero = this.heroService.getHero(id);
   }
 }
