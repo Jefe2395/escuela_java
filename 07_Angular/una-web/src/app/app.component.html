@@ -1,8 +1,20 @@
 <h1>Una web</h1>
 <h2>{{title}}</h2>
 <div>
-    <app-mi-control></app-mi-control>
-    <app-heros-list></app-heros-list>
-    
-</div>
 
+    <nav>
+        <a routerLink="/dashboard">Home</a>
+        <br />
+        <a routerLink="/heroes">Show list!</a>
+        <br />
+        <a routerLink="/new-hero">New Hero!</a>
+    </nav>
+    <router-outlet></router-outlet>
+    <!--<app-mi-control></app-mi-control>
+    <app-new-hero></app-new-hero>
+   
+    <app-heros-list></app-heros-list>-->
+    <app-messages></app-messages>
+
+
+</div>

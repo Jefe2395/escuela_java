@@ -1,0 +1,9 @@
+<label>Name: </label>
+<input #name type="text" id="name" />
+<!--<input id="name" type="text" [(ngModel)])="newName"/>-->
+<br />
+<label>Image: </label>
+<input #imagen type="text" id="imagen" />
+<!--<input id="imagen" type="text" [(ngModel)])="newImagen"/>-->
+<br />
+<button (click)="heroService.addHero(name.value,imagen.value)">Add Hero</button>
