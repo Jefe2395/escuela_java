@@ -35,7 +35,7 @@ public class UsersRestController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json; charset=UTF-8");
-
+        setAccessControlHeaders(resp);
         Gson gson = new Gson();
         User user = gson.fromJson(req.getReader(), User.class);
         User newUser;
@@ -53,7 +53,7 @@ public class UsersRestController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json; charset=UTF-8");
-
+        setAccessControlHeaders(resp);
         try {
             List<User> usersList = userServ.getAll();
             //Serializamos el List en un JSON
@@ -70,7 +70,7 @@ public class UsersRestController extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json; charset=UTF-8");
-
+        setAccessControlHeaders(resp);
         Gson gson = new Gson();
         User user = gson.fromJson(req.getReader(), User.class);
 
@@ -90,14 +90,14 @@ public class UsersRestController extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       resp.setContentType("application/json; charset=UTF-8");
-
+        resp.setContentType("application/json; charset=UTF-8");
+        setAccessControlHeaders(resp);
         Gson gson = new Gson();
         User user = gson.fromJson(req.getReader(), User.class);
 
         try {
             userServ.borrarPorEmail(user.getEmail());
-            
+
             String json = gson.toJson(user);
             resp.getWriter().print(json);
 
@@ -105,7 +105,18 @@ public class UsersRestController extends HttpServlet {
             Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+
+    @Override
+    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        setAccessControlHeaders(resp);
+        resp.setStatus(HttpServletResponse.SC_OK); //Devovlemos cod 200 = OK
+    }
+
+    private void setAccessControlHeaders(HttpServletResponse resp) {
+        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        resp.setHeader("Access-Control-Allow-Methods", "OPTIONS,HEAD,GET,PUT,DELETE,POST");
+        resp.setHeader("Access-Control-Allow-Headers", "X-PINGOTHER,Origin,X-Requested-With, Content-Type,Accept");
+        resp.setHeader("Access-Control-Allow-Max-Age", "1728000"); //20 dias
+    }
 
 }
